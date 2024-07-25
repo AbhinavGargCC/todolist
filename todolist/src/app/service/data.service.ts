@@ -9,27 +9,6 @@ import { ToDO } from '../types';
 export class DataService {
   constructor(private httpClient: HttpClient) {}
 
-  // {
-  //     headers?: HttpHeaders | {
-  //         [header: string]: string | string[];
-  //     };
-  //     context?: HttpContext;
-  //     observe?: 'body';
-  //     params?: HttpParams | {
-  //         [param: string]: string | number | boolean | ReadonlyArray<string | number | boolean>;
-  //     };
-  //     reportProgress?: boolean;
-  //     responseType?: 'json';
-  //     withCredentials?: boolean;
-  //     transferCache?: {
-  //         includeHeaders?: string[];
-  //     } | boolean;
-  // }
-
-  // get<T>(url: string): Observable<T> {
-  //   return this.httpClient.get<T>(url);
-  // }
-
   get<T>(url: string, params?: { [key: string]: any }): Observable<T> {
     let httpParams = new HttpParams();
     if (params) {
