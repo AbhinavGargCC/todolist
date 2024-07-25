@@ -1,0 +1,70 @@
+<div class="flex flex-col w-full h-full">
+  <!-- Form to add new task -->
+  <app-add-new-task
+    (updateTodoList)="updatePendingTasks()"
+    class="w-full flex justify-center m-3"
+  ></app-add-new-task>
+
+  <!-- Lists container -->
+  <div class="flex gap-3 w-full justify-around flex-wrap">
+    <!-- Action to be taken tasks -->
+    <div class="flex flex-col items-center gap-2 h-screen overflow-y-scroll">
+      <h2 class="text-2xl font-extrabold sticky bg-white w-full top-0 py-3">
+        🎬 Action to be taken
+      </h2>
+      <app-listing
+        [todoList]="pendingTasksList"
+        [showMoveToDoneBtn]="true"
+        [showMoveToBacklogBtn]="true"
+        [showMoveToProgressBtn]="true"
+        (updateForDoneClicked)="updateForDoneClicked($event)"
+        (updateForBacklogClicked)="updateForBacklogClicked($event)"
+        (updateForProgressClicked)="updateForProgressClicked($event)"
+      ></app-listing>
+    </div>
+
+    <!-- In-Progress tasks -->
+    <div class="flex flex-col items-center gap-2 h-screen overflow-y-scroll">
+      <h2 class="text-2xl font-extrabold sticky bg-white w-full top-0 py-3">
+        ⏳In Progress
+      </h2>
+      <app-listing
+        [todoList]="inProgressTasksList"
+        [showMoveToDoneBtn]="true"
+        [showMoveToBacklogBtn]="true"
+        (updateForDoneClicked)="updateForDoneClicked($event)"
+        (updateForBacklogClicked)="updateForBacklogClicked($event)"
+      ></app-listing>
+    </div>
+
+    <!-- Completed -->
+    <div class="flex flex-col items-center gap-2 h-screen overflow-y-scroll">
+      <h2 class="text-2xl font-extrabold sticky bg-white w-full top-0 py-3">
+        ✅ Completed
+      </h2>
+      <app-listing
+        [todoList]="completedTasksList"
+        [showMoveToBacklogBtn]="true"
+        [showMoveToProgressBtn]="true"
+        (updateForBacklogClicked)="updateForBacklogClicked($event)"
+        (updateForProgressClicked)="updateForProgressClicked($event)"
+      ></app-listing>
+    </div>
+
+    <!-- Backlog tasks -->
+    <div class="flex flex-col items-center gap-2 h-screen overflow-y-scroll">
+      <h2 class="text-2xl font-extrabold sticky bg-white w-full top-0 py-3">
+        🗂️ Backlogs
+      </h2>
+      <app-listing
+        [todoList]="backlogTasksList"
+        [showMoveToDoneBtn]="true"
+        [showMoveToPendingBtn]="true"
+        [showMoveToProgressBtn]="true"
+        (updateForDoneClicked)="updateForDoneClicked($event)"
+        (updateForPendingClicked)="updateForPendingClicked($event)"
+        (updateForProgressClicked)="updateForProgressClicked($event)"
+      ></app-listing>
+    </div>
+  </div>
+</div>

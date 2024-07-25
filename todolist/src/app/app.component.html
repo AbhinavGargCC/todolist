@@ -1,0 +1,6 @@
+<div class="flex h-screen">
+  @if(!isLoginPage()){<app-side-bar class="flex-[0.1] w-full"></app-side-bar>}
+  <div class="flex-[0.9] overflow-y-scroll">
+    <router-outlet></router-outlet>
+  </div>
+</div>
